@@ -4,4 +4,5 @@ const rootUrl='http://192.168.1.3:8000/smartcommunity'
 module.exports={
   welcome: rootUrl + '/welcome/',
   banner: rootUrl + '/banner/',
+  collection: rootUrl + '/collection/',
 }

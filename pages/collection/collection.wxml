@@ -18,7 +18,8 @@
     <view class="item" wx:for="{{dataDict.result}}" wx:for-item="row" wx:key="index">
       <view class="record">
         <view class="avatar">
-          <image src="{{row.avatar}}"></image>
+          <!-- <image src="{{row.avatar}}"></image> -->
+          <image src="http://192.168.1.3:8000/media/collection/2026/02/02/lyf.png" mode="widthFix"></image>
         </view>
         <view class="desc">
           <view class="username">{{row.name}}</view>
@@ -32,7 +33,7 @@
             </view>
           </view>
         </view>
-        <view class="delete" bindtap="doDeleteRow" data-nid="{{row.id}}" data-index="{{index}}">
+        <view class="delete" bind:tap="doDeleteRow" data-nid="{{row.id}}" data-index="{{index}}">
           <label class="iconfont icon-shanchu"></label>
         </view>
       </view>

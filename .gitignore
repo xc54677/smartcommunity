@@ -1,0 +1,19 @@
+# 微信开发者工具缓存/配置
+#git add .
+#git commit -m "修改了XX功能/修复了XXbug"
+#git push origin main
+.vscode/
+.git/
+#project.config.json
+#project.private.config.json
+#miniprogram_npm/
+#node_modules/
+# 日志/临时文件
+*.log
+*.tmp
+*.swp
+# 环境变量/敏感信息
+.env
+.env.*
+# 其他无关文件
+DS_Store
