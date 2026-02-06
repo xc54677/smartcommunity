@@ -9,13 +9,11 @@
 
   <view class="picker-group">
     <picker bindchange="bindPickerChange" value="{{index}}" range="{{objectArray}}" range-key="name">
-
       <view wx:if="{{ index > -1}}" class="picker-txt picker">当前网格：{{objectArray[index].name}}</view>
-      <view wx:else class="picker-txt" >请选择网格</view>
-      
+      <view wx:else class="picker-txt">请选择网格</view>
     </picker>
   </view>
   <view>
-    <button class="submit" bindtap="postUser" > 提 交 </button>
+    <button class="submit" bindtap="postUser"> 提 交 </button>
   </view>
 </view>
