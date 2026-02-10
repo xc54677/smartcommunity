@@ -11,7 +11,8 @@
     "pages/heart/heart",
     "pages/goods/goods",
     "pages/camera/camera",
-    "pages/form/form"
+    "pages/form/form",
+    "pages/statistics/statistics"
   ],
   "window": {
     "navigationBarTitleText": "智慧社区",

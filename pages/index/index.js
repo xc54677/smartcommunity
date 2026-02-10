@@ -34,8 +34,19 @@ Page({
     })
   },
   gotoVoice(){
-    wx.navigateTo({
-      url: '/pages/voice/voice',
+    // wx.navigateTo({
+    //   url: '/pages/voice/voice',
+    // })
+    wx.showModal({
+      title: '提示',
+      content: '该功能模块暂时不开放',
+      showCancel: false, // 只显示“确定”按钮
+      confirmText: '确定',
+      success: (res) => {
+        if (res.confirm) {
+          // 用户点击“确定”后，弹窗自动关闭，无需额外操作
+        }
+      }
     })
   },
   gotoHeart(){

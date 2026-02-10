@@ -1,1 +1,67 @@
-/* pages/notice/notice.wxss */
+.container {
+  padding: 20rpx;
+}
+
+.notice-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20rpx; /* 添加间距 */
+  border-bottom: 1px solid #f0f0f0; /* 添加底部边框 */
+  padding-bottom: 20rpx; /* 增加底部内边距 */
+}
+
+.notice-image {
+  width: 150rpx;
+  height: 120rpx;
+  border-radius: 6rpx;
+  margin-right: 20rpx;
+}
+
+.notice-content {
+  flex: 1;
+}
+
+.notice-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.notice-time {
+  font-size: 24rpx;
+  color: #666666;
+  margin-bottom: 10rpx;
+}
+
+/* 内容容器样式 */
+.notice-details-wrap {
+  position: relative;
+}
+
+/* 收起状态：限制显示2行，超出省略 */
+.notice-details.collapsed {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* 可修改为1行/3行，根据需求调整 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+/* 展开状态：显示完整内容 */
+.notice-details.expanded {
+  display: block;
+}
+
+/* 展开/收起按钮样式 */
+.toggle-btn {
+  color: #007aff;
+  font-size: 22rpx;
+  margin-top: 8rpx;
+  cursor: pointer;
+}
+
+.notice-details {
+  font-size: 24rpx;
+  color: #333333;
+}

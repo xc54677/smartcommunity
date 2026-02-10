@@ -1,66 +1,56 @@
-// pages/face/face.js
+import api from '../../config/settings'
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    backFront:true,
+    record:[]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  switchCamera(e) {
+    var old = this.data.backFront
+    this.setData({
+      backFront: !old
+    })
   },
+  takePhoto(e){
+    // 1 打开loading
+    wx.showLoading({
+      title: '检测中',
+      mask:true
+    })
+    //2 拿到相机对象，拍照
+    const ctx = wx.createCameraContext()
+    ctx.takePhoto({
+      quality: 'high',
+      success: (res) => {
+        //3 res中会有拍摄的照片
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+        // 4 把照片传到后端
+        wx.uploadFile({
+          url: api.face,
+          filePath: res.tempImagePath,
+          name: 'avatar',
+          success:(response)=>{
+            // 5 上传成功，后端返回数据
+            let resdata = JSON.parse(response.data)
+            if(resdata.code==100 || resdata.code==102){
+              resdata.avatar = res.tempImagePath
+              var oldRecord = this.data.record
+              oldRecord.unshift(resdata)
+              console.log(oldRecord)
+              this.setData({
+                record:oldRecord
+              })
+            }else{
+              wx.showToast({
+                title: '请正常拍照'
+              })
+            }
+          },
+          complete:function(){
+            wx.hideLoading()
+          }
+        })
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })

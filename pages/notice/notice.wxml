@@ -1,2 +1,23 @@
-<!--pages/notice/notice.wxml-->
-<text>pages/notice/notice.wxml</text>
+<view class="container">
+  <!-- 使用wx:for循环遍历社区公告列表 -->
+  <view wx:for="{{noticeList}}" wx:key="index" class="notice-item">
+    <!-- 左侧图片 -->
+    <image class="notice-image" src="{{item.img}}" mode="aspectFill"></image>
+    <!-- 右侧内容 -->
+    <view class="notice-content">
+      <view class="notice-title">{{item.title}}</view>
+      <view class="notice-time">{{item.create_time}}</view>
+      <!-- 公告内容区域：添加展开/收起逻辑 -->
+      <view class="notice-details-wrap">
+        <!-- 截断/完整显示内容 -->
+        <text class="notice-details {{item.isExpanded ? 'expanded' : 'collapsed'}}">
+          {{item.content}}
+        </text>
+        <!-- 展开/收起按钮：仅内容过长时显示 -->
+        <view wx:if="{{item.isContentTooLong}}" class="toggle-btn" bindtap="toggleExpand" data-index="{{index}}">
+          {{item.isExpanded ? '收起' : '展开'}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
